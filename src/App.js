@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import TextBox from "./Components/TextBox/TextBox";
 import Validation from "./Components/Validation/Validation";
 import Char from "./Components/Char/Char";
-
+import "./App.css"
 
 class App extends Component {
   state = {
@@ -23,13 +23,13 @@ class App extends Component {
 
   render() {
     const charLsit = this.state.userInput.split("").map((chr, index) => {
-      return <Char text={chr} key={index} funcClick={() => this.deleteHandeler(index)} />
+      return <Char text={chr} key={index} funcClick={() => { this.deleteHandeler(index) }} />
     })
     return (
-      <div>
+      <div className="container">
+        <p>Text:  {this.state.userInput} </p>
         <TextBox change={this.inputLisinerHandeler} />
-        <p> {this.state.userInput} </p>
-        <Validation inputLengh={this.state.userInput.length} />
+        <Validation inputLength={this.state.userInput.length} />
         {charLsit}
       </div>
     );
